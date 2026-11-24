@@ -176,6 +176,8 @@ sctp_startup_iterator(void)
 		/* You only get one */
 		return;
 	}
+	/* Reset termination flags after a previous joined shutdown. */
+	sctp_it_ctl.iterator_flags = 0;
 	/* Initialize global locks here, thus only once. */
 	SCTP_ITERATOR_LOCK_INIT();
 	SCTP_IPI_ITERATOR_WQ_INIT();

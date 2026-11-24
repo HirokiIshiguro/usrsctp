@@ -120,6 +120,12 @@ finish_random(void)
 {
 	return;
 }
+/* This define can be used on platforms that have none of the random sources
+ * below. The application then provides init_random(), read_random() and
+ * finish_random() itself; read_random() must fill the buffer from a
+ * cryptographically secure source.
+ */
+#elif defined(SCTP_USE_EXTERNAL_RAND)
 #elif defined(__FreeBSD__) || defined(__DragonFly__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__APPLE__) || defined(__Bitrig__)
 #include <stdlib.h>
 
